@@ -1,0 +1,327 @@
+/* --- 全局变量和重置 --- */
+:root {
+    --primary-color: #007bff;
+    --dark-bg: #0a2540;
+    --light-bg: #ffffff;
+    --text-color: #333;
+    --text-light: #f4f4f4;
+    --border-color: #ddd;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- 页眉和导航 (使用 Flexbox) --- */
+header {
+    background-color: var(--dark-bg);
+    color: var(--light-bg);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header .container {
+    display: flex; /*  Flexbox 布局 */
+    justify-content: space-between; /*  两端对齐 */
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.nav-links {
+    display: flex; /*  Flexbox 布局 */
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: var(--light-bg);
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease; /*  Hover 过渡 */
+}
+
+.nav-links a:hover {
+    background-color: var(--primary-color); /*  Hover 效果 */
+    color: var(--light-bg);
+}
+
+/* 汉堡菜单 (用于响应式) */
+#menu-toggle {
+    display: none;
+}
+.menu-icon {
+    display: none;
+    font-size: 2rem;
+    color: var(--light-bg);
+    cursor: pointer;
+}
+
+/* --- 区域通用样式 --- */
+section {
+    padding: 4rem 0;
+}
+
+section:nth-child(even) {
+    background-color: var(--light-bg);
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--dark-bg);
+}
+
+h2 i {
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+/* --- 英雄区域 (Hero) --- */
+#hero {
+    background-color: var(--dark-bg);
+    color: var(--light-bg);
+    text-align: center;
+    padding: 6rem 0;
+}
+
+#hero h2 {
+    font-size: 3rem;
+    color: var(--light-bg);
+}
+
+#hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 1rem auto 0;
+}
+
+/* --- 实习经历 --- */
+.job-card {
+    background-color: var(--light-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-left: 5px solid var(--primary-color);
+}
+
+.job-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.job-card ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.job-card li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.job-card li::before {
+    content: '\2022'; /* 圆点 */
+    color: var(--primary-color);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1.5rem;
+    position: absolute;
+    left: 0.5rem;
+}
+
+/* --- 项目经历 (使用 Grid) --- */
+.grid-container {
+    display: grid; /*  Grid 布局 */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /*  响应式列 */
+    gap: 2rem;
+}
+
+.project-card {
+    background-color: var(--light-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    display: flex; /*  使用 Flex 解决卡片等高问题 */
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /*  Hover 过渡 */
+}
+
+.project-card:hover {
+    transform: translateY(-5px); /*  Hover 效果 */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1); /*  Hover 效果 */
+}
+
+.project-card h3 {
+    padding: 1.5rem 1.5rem 0.5rem;
+}
+
+.project-meta {
+    padding: 0 1.5rem;
+    font-style: italic;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.project-content {
+    padding: 0 1.5rem 1.5rem;
+    flex-grow: 1; /*  解决等高问题的关键 */
+}
+
+.project-content p {
+    margin-bottom: 0.5rem;
+}
+
+/* --- 技能与荣誉 (使用 Flexbox) --- */
+.skills-awards-container {
+    display: flex; /*  Flexbox 布局 */
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.skills-list, .awards-list {
+    flex: 1; /*  均分空间 */
+    min-width: 300px;
+    background-color: var(--light-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.skills-list h3, .awards-list h3 {
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.skills-list ul, .awards-list ul {
+    list-style: none;
+}
+
+.skills-list li, .awards-list li {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.skills-list i, .awards-list i {
+    margin-right: 10px;
+    color: var(--primary-color);
+    width: 20px; /* 确保图标对齐 */
+    text-align: center;
+}
+
+/* --- 页脚 --- */
+footer {
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    text-align: center;
+    padding: 3rem 0;
+}
+
+footer h2 {
+    color: var(--light-bg);
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+}
+
+footer i {
+    margin-right: 8px;
+}
+
+/* --- 响应式设计 (媒体查询) --- */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .nav-links {
+        display: none; /*  默认隐藏导航 */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px; /* 页眉高度 */
+        left: 0;
+        background-color: var(--dark-bg);
+    }
+
+    .nav-links li {
+        margin: 0;
+        text-align: center;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .nav-links a {
+        padding: 1rem;
+        display: block;
+    }
+
+    .menu-icon {
+        display: block; /*  显示汉堡图标 */
+    }
+
+    /*  当复选框被选中时，显示导航 */
+    #menu-toggle:checked ~ .nav-links {
+        display: flex;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    #hero h2 {
+        font-size: 2.2rem;
+    }
+
+    /* Grid 和 Flex 布局堆叠 */
+    .grid-container {
+        grid-template-columns: 1fr; /*  变为单列 */
+    }
+
+    .skills-awards-container {
+        flex-direction: column; /*  变为单列 */
+    }
+}
